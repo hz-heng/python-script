@@ -13,4 +13,4 @@ while True:
             time.sleep(3)
             os.system("service teleport restart") #重启服务
     except:
-        logging.warning("Error", sys.exc_info()[1])
+        logging.warning(sys.exc_info()[1])
