@@ -11,8 +11,9 @@ logging.basicConfig(
 
 def run():
     try:
-        res = os.popen('ps -C tp_core -o pid,cmd').readlines()
-        if len(res) < 2:
+        res1 = os.popen('ps -C tp_core -o pid,cmd').readlines()
+        res2 = os.popen('ps -C tp_web -o pid,cmd').readlines()
+        if len(res1) < 2 or len(res2) < 2:
             logging.warning("teleport need to restart")
             if os.system("/etc/init.d/teleport restart") == 0: # 0表示命令执行成功，1表示失败
                 logging.info("teleport restart successful")
